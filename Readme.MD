@@ -153,16 +153,3 @@ Goblin is stunned, skips turn
 Warrior uses Potion to heal
 Goblin is still stunned, skips turn
 Warrior executes BasicAttack, eliminating Goblin
-
-
-Submission Checklist
-
- Report (UML diagrams, design considerations, reflection)
- UML Class Diagram (high-resolution PDF or image)
- UML Sequence Diagram (high-resolution PDF or image)
- GitHub repository with full commit history
- Declaration of Original Work (Appendix B) — signed by all members
- Declaration on Use of GAI Assistance (Appendix C) — signed individually
-
-Deadline: April 19, 11:59 PM — Submit via NTULearn lab group assignment link.
-Zip file naming convention: LABGroup_AssignmentGrp.zip (e.g., FCS1_Grp1.zip)
