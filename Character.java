@@ -73,26 +73,25 @@ public abstract class Character implements Combatant {
     public void updateAfterTurn() {
         for (StatusEffect effect : statusEffects) {
             effect.OnTurnEnd(this);
-            System.out.println(effect.getClass().getSimpleName() + " duration: " + effect.getDuration());
         }
-
         statusEffects.removeIf(effect -> effect.getDuration() <= 0);
+        decrementStun();
     }
 
     @Override
     public void onTurnSkipped() {
-        //this.updateAfterTurn();
+        decrementStun();
     }
-/* 
+
     private void decrementStun() {
         if (stunTurnsRemaining > 0) {
             stunTurnsRemaining--;
             if (stunTurnsRemaining == 0) {
                 stunned = false;
+                System.out.println("  >> " + name + " is no longer stunned.");
             }
         }
     }
-*/
 
     public void addStatusEffect(StatusEffect effect) {
         statusEffects.add(effect);

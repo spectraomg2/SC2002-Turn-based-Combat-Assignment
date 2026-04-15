@@ -73,11 +73,22 @@ public class BattleEngine implements EventListener {
 
         if (!player.isAlive()) {
             long surviving = activeEnemies.stream().filter(Enemy::isAlive).count();
-            System.out.println("Defeated. Don't give up, try again!");
-            System.out.println("Enemies remaining: " + surviving + " | Total rounds: " + roundNumber);
+            System.out.println("\n========================================");
+            System.out.println("  DEFEATED. Don't give up, try again!");
+            System.out.println("========================================");
+            System.out.println("  Enemies remaining : " + surviving);
+            System.out.println("  Total rounds      : " + roundNumber);
+            printItemSummary();
+            System.out.println("========================================");
         } else {
-            System.out.println("You win! All enemies defeated.");
-            System.out.println("Remaining HP: " + player.getHealth() + "/" + player.getMaxHealth() + " | Total rounds: " + roundNumber);
+            System.out.println("\n========================================");
+            System.out.println("  VICTORY! Congratulations!");
+            System.out.println("  You have defeated all your enemies.");
+            System.out.println("========================================");
+            System.out.println("  Remaining HP  : " + player.getHealth() + "/" + player.getMaxHealth());
+            System.out.println("  Total rounds  : " + roundNumber);
+            printItemSummary();
+            System.out.println("========================================");
         }
     }
 
@@ -166,7 +177,6 @@ public class BattleEngine implements EventListener {
                     return;
                 }
                 p.useSpecialSkill(p, alive, true);
-                p.startSpecialSkillCooldown();
             }
             default -> System.out.println("Invalid choice, turn skipped.");
         }
@@ -218,6 +228,15 @@ public class BattleEngine implements EventListener {
         List<Enemy> alive = new ArrayList<>();
         for (Enemy e : activeEnemies) if (e.isAlive()) alive.add(e);
         return alive;
+    }
+
+    private void printItemSummary() {
+        long potions    = inventory.stream().filter(i -> i instanceof Potion).count();
+        long smokeBombs = inventory.stream().filter(i -> i instanceof SmokeBomb).count();
+        long powerStones= inventory.stream().filter(i -> i instanceof PowerStone).count();
+        System.out.println("  Potions left  : " + potions);
+        System.out.println("  Smoke Bombs   : " + smokeBombs);
+        System.out.println("  Power Stones  : " + powerStones);
     }
 
     private void printStatus() {
