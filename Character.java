@@ -80,7 +80,7 @@ public abstract class Character implements Combatant {
 
     @Override
     public void onTurnSkipped() {
-        decrementStun();
+        
     }
 
     private void decrementStun() {
